@@ -1,5 +1,6 @@
-<?php 
- 
+<?php  
+
+$tipoConta = $_POST['tipoConta'];
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 $connect = mysqli_connect('localhost','root','');
@@ -14,7 +15,7 @@ $logarray = $array['email'];
  
     }else{
         
-      if(strlen($email)<8 || strstr($email,'@')==false)
+      if(strstr($email,'@')==false)
         {
           echo"<script language='javascript' type='text/javascript'>alert('Favor digitar seu email corretamente');window.location.href='telaCadastro.php';</script>";  
         }else{
@@ -35,7 +36,7 @@ $logarray = $array['email'];
 
             }else{
 
-                $idconta = 1;
+                $idconta = $tipoConta;
               $query = "INSERT INTO usuarios (contas_idcontas,email,senha) VALUES ('$idconta','$email','$senha')";
               $insert = mysqli_query($connect,$query);
 

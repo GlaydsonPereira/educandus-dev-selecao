@@ -24,16 +24,21 @@ and open the template in the editor.
             <label for="senha">Senha:</label>
             <input type="password" name="senha" id="senha" type="text" size="20" pattern="[a-zA-Z0-9]+" required/>
         </p>
-
+        <?php
+         $con = new mysqli('localhost','root','','selecao_educandus' ) or die (mysql_error());         
+        $query = $con->query("SELECT * FROM contas");?>   
+        <select name="tipoConta">
+            <?php while($reg = $query->fetch_array()) {?>
+                <option value="<?php echo $reg["idcontas"]?>"><?php echo $reg["descricao"]?></option>   
+            <?php }?>
+        </select>
         </fieldset>
 
         <p>
         <input type="submit" value="Cadastrar" id="cadastrar" name="cadastrar">
          </p>
 
-        </form>
-        <?php
-        
-        ?>
+        </form>     
+   
     </body>
 </html>

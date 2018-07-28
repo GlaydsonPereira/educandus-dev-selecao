@@ -8,7 +8,7 @@ function validarCamposMandatorios(){
         alert("Preencha todos os campos obrigatórios");
         return false;
     }else{
-        document.forms["formTipoConta"].action = "../controller/contaController.php";
+        document.forms["formTipoConta"].action = "../controlador/ControladorConta.php";
         document.forms["formTipoConta"].submit();
     }
 }

@@ -22,7 +22,7 @@ and open the template in the editor.
         
         <p>
             <label for="senha">Senha:</label>
-            <input name="senha" id="senha" type="text" />
+            <input type="password" name="senha" id="senha" type="text" size="20" />
         </p>
 
         </fieldset>

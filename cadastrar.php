@@ -20,12 +20,9 @@ $logarray = $array['email'];
         }else{
         
              $len = strlen($senha); 
-             if ($len < 8) { // too short 
+             if ($len < 8) { 
                     echo"<script language='javascript' type='text/javascript'>alert('Favor digitar no mínimo oito caracteres na senha');window.location.href='telaCadastro.php';</script>";
-                 }elseif ( $len > 20) { // too long. 
-                         }elseif (!preg_match("/([a-zA-Z0-9])/", $senha)) { // does not have a character 
-                             echo"<script language='javascript' type='text/javascript'>alert('Favor não digitar caracteres especiais na senha');window.location.href='telaCadastro.php';</script>";
-                         }
+                 }
                  
              
                  

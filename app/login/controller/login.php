@@ -12,8 +12,8 @@
           die();
         }else{
           setcookie("email",$email);
-          echo 'Logado';
-          //header("Location:index.php");
+          //echo 'Logado';
+          header("Location:../../arquivo/tela/telaArquivos.php");
         }
     }
 ?>

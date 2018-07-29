@@ -10,7 +10,7 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <form id="formulario" action="cadastrar.php" method="POST">
+        <form id="formulario" action="../repositorio/cadastrar.php" method="POST">
         <fieldset>
 
         <legend>Cadastro</legend>

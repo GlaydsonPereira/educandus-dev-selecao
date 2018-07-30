@@ -6,6 +6,7 @@ if($_SESSION['usuarioLogado'] == null){
 include_once '../repositorio/arquivoRepositorio.php';            
 $usuario = $_SESSION['usuarioLogado'];
 $repositorio = new ArquivoRepositorio();
+
 ?>
 <html lang="pt-br">
     <head>
@@ -20,10 +21,18 @@ $repositorio = new ArquivoRepositorio();
         <link href="../../recursos/css/folha_estilo.css" media="screen" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <form enctype="multipart/form-data" action="updateArquivo.php" method="POST">
+        <form enctype="multipart/form-data" action="../repositorio/updateArquivo.php" method="POST">
+            
             <div style="float: top; clear: both; margin-left: 5%; margin-right: 5%;">
                 <label>Enviar esse arquivo: </label><br/>
                 <input name="userfile" type="file" />
+                <?php
+                 $con = new mysqli('localhost','root','','selecao_educandus' ) or die (mysql_error());         
+                 $query = $con->query("SELECT * FROM tipo_arquivo");?>   
+                 <select name="tipoArquivo">
+                 <?php while($reg = $query->fetch_array()) {?>
+                 <option value="<?php echo $reg["idtipo_arquivo"]?>"><?php echo $reg["descricao"]?></option>   
+                <?php }?>
                 <input type="submit" value="enviar" />
             </div>
             

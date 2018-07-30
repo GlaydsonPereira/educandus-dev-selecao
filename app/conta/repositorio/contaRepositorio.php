@@ -35,17 +35,17 @@ class ContaRepositorio{
     function consultarLimiteUploadPorTipoConta($idUsuario) {
         
         $sql = "SELECT arq.usuarios_idusuarios, ";
-        $sql += "(CASE WHEN (con.limite_max_conta - agrupamento.somaArquivos) > 0 ";
-        $sql += "   THEN (con.limite_max_conta - agrupamento.somaArquivos) ELSE 0 END) diferenca ";
-        $sql += "FROM arquivos arq INNER JOIN usuarios usu on (arq.idarquivos = usu.idusuarios) ";
-	$sql += "   INNER JOIN  contas con on (usu.contas_idcontas = con.idcontas), ";
-	$sql += "(SELECT arq2.usuarios_idusuarios, SUM(arq2.tamanho) somaArquivos ";
-        $sql += "   FROM arquivos arq2 WHERE arq2.usuarios_idusuarios = $idUsuario GROUP BY arq2.usuarios_idusuarios) agrupamento ";
-        $sql += "WHERE arq.usuarios_idusuarios = $idUsuario and arq.usuarios_idusuarios = agrupamento.usuarios_idusuarios ";
-        $sql += "GROUP BY arq.usuarios_idusuarios";
+        $sql .= "(CASE WHEN (con.limite_max_conta - agrupamento.somaArquivos) > 0 ";
+        $sql .= "   THEN (con.limite_max_conta - agrupamento.somaArquivos) ELSE 0 END) diferenca ";
+        $sql .= "FROM arquivos arq INNER JOIN usuarios usu on (arq.idarquivos = usu.idusuarios) ";
+	$sql .= "   INNER JOIN  contas con on (usu.contas_idcontas = con.idcontas), ";
+	$sql .= "(SELECT arq2.usuarios_idusuarios, SUM(arq2.tamanho) somaArquivos ";
+        $sql .= "   FROM arquivos arq2 WHERE arq2.usuarios_idusuarios = $idUsuario GROUP BY arq2.usuarios_idusuarios) agrupamento ";
+        $sql .= "WHERE arq.usuarios_idusuarios = $idUsuario and arq.usuarios_idusuarios = agrupamento.usuarios_idusuarios ";
+        $sql .= "GROUP BY arq.usuarios_idusuarios";
         $query = $this->db->query($sql);
 
-        return mysqli_fetch_all($query);
+        return $this->db->query($sql);
     }    
 }
 ?>

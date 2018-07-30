@@ -1,4 +1,7 @@
 <?php 
+session_start();
+include_once '../repositorio/usuario.php';
+
   $email = $_POST['email'];
   $entrar = $_POST['entrar'];
   $senha = $_POST['senha'];
@@ -12,7 +15,8 @@
           die();
         }else{
           setcookie("email",$email);
-          //echo 'Logado';
+          $usuario = mysqli_fetch_array($verifica);
+          $_SESSION['usuarioLogado'] = $usuario;
           header("Location:../../arquivo/tela/telaArquivos.php");
         }
     }

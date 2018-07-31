@@ -51,10 +51,11 @@ $repositorio = new ArquivoRepositorio();
                             $arrayMeusArquivos = $repositorio->consultarTodosMeusArquivos($usuario['idusuarios']);
                             if(!empty($arrayMeusArquivos)){
                                 while ($reg = $arrayMeusArquivos->fetch_array()){
+                                    $idArquivo = $reg['idarquivos'];
                                     $linha = "<tr>";
                                     $linha .= "<td>".$reg['nome']."</td>";
                                     $linha .= "<td><center><a href=''>".$reg['qtdCompartilhamentos']."</a></center></td>";
-                                    $linha .= "<td><a href=''>Excluir</a></td>";
+                                    $linha .= "<td><a href='../repositorio/excluirArquivo.php?idArquivo=$idArquivo'>Excluir</a></td>";
                                     $linha .= "<tr>";
                                     echo $linha;
                                 }

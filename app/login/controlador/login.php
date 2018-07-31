@@ -11,7 +11,7 @@ include_once '../repositorio/usuario.php';
              
       $verifica = mysqli_query($connect,"SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'") or die("erro ao selecionar");
         if (mysqli_num_rows($verifica)<=0){
-          echo"<script language='javascript' type='text/javascript'>alert('Email e/ou senha incorretos');window.location.href='../view/index.html';</script>";
+          echo"<script language='javascript' type='text/javascript'>alert('Email e/ou senha incorretos');window.location.href='../tela/index.html';</script>";
           die();
         }else{
           setcookie("email",$email);

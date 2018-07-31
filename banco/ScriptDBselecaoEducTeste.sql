@@ -80,8 +80,8 @@ CREATE TABLE IF NOT EXISTS `selecao_educandus`.`arquivos` (
   `idarquivos` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `usuarios_idusuarios` INT NOT NULL COMMENT '',
   `nome` VARCHAR(45) NULL COMMENT '',
-  `path` VARCHAR(45) NULL COMMENT '',
-  `tamanho` decimal(45,0) NULL COMMENT '',
+  `path` VARCHAR(255) NULL COMMENT '',
+  `tamanho` decimal(50,30) NULL COMMENT '',
   `tipo_arquivo_idtipo_arquivo` INT NOT NULL COMMENT '',
   PRIMARY KEY (`idarquivos`, `usuarios_idusuarios`, `tipo_arquivo_idtipo_arquivo`)  COMMENT '',
   CONSTRAINT `fk_arquivos_usuarios`
@@ -95,6 +95,8 @@ CREATE TABLE IF NOT EXISTS `selecao_educandus`.`arquivos` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+INSERT INTO arquivos (idarquivos, usuarios_idusuarios, nome, path, tamanho, tipo_arquivo_idtipo_arquivo) VALUES ('1', '1', 'fotoTrabalho.jpeg', 'C:\\Users\\hghg\\Pictures\\glaydson\\fotoTrabalho.jpeg', '22963814.4', '3'), ('2', '3', 'animacao.wvn', 'C:\\Users\\hghg\\Pictures\\glaydson\\animacao.wvn', '4567892125', '2');
 
 CREATE INDEX `fk_arquivos_usuarios_idx` ON `selecao_educandus`.`arquivos` (`usuarios_idusuarios` ASC)  COMMENT '';
 
@@ -121,6 +123,8 @@ CREATE TABLE IF NOT EXISTS `selecao_educandus`.`compartilhamento` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+INSERT INTO compartilhamento (arquivos_idarquivos, usuarios_idusuarios) VALUES ('1', '3'), ('1', '2'), ('2', '4');
 
 CREATE INDEX `fk_compartilhamento_arquivos1_idx` ON `selecao_educandus`.`compartilhamento` (`arquivos_idarquivos` ASC)  COMMENT '';
 

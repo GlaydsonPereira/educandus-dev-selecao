@@ -6,7 +6,6 @@ if($_SESSION['usuarioLogado'] == null){
 include_once '../repositorio/arquivoRepositorio.php';            
 $usuario = $_SESSION['usuarioLogado'];
 $repositorio = new ArquivoRepositorio();
-
 ?>
 <html lang="pt-br">
     <head>
@@ -47,7 +46,8 @@ $repositorio = new ArquivoRepositorio();
                             </tr>                    
                         </thead>
                         <tbody>
-                            <?php                                         
+                            <?php     
+                            $idusuario = ($usuario['idusuarios']);
                             $arrayMeusArquivos = $repositorio->consultarTodosMeusArquivos($usuario['idusuarios']);
                             if(!empty($arrayMeusArquivos)){
                                 while ($reg = $arrayMeusArquivos->fetch_array()){

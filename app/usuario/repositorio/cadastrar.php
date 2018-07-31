@@ -41,7 +41,7 @@ $logarray = $array['email'];
               $insert = mysqli_query($connect,$query);
 
               if($insert){
-                echo"<script language='javascript' type='text/javascript'>alert('Usuário cadastrado com sucesso!');window.location.href='../../login/view/index.html'</script>";
+                echo"<script language='javascript' type='text/javascript'>alert('Usuário cadastrado com sucesso!');window.location.href='../../login/tela/index.html'</script>";
               }else{
                   echo"<script language='javascript' type='text/javascript'>alert('Não foi possível cadastrar esse usuário');window.location.href='../tela/telaCadastro.php'</script>";
               }

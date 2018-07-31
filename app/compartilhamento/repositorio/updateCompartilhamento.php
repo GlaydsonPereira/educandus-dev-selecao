@@ -2,7 +2,6 @@
 $usuarioComp = $_POST['idUsuarioComp'];
 $idAquivoComp = $_POST['idAquivoComp'];
 $nomeArquivo = $_POST['nomeArquivo'];
-echo $usuarioComp.$idAquivoComp;
 
     $connect = mysqli_connect('localhost','root','');
     $db = mysqli_select_db($connect,'selecao_educandus');

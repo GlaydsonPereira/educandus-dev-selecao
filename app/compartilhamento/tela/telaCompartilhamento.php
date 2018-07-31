@@ -9,14 +9,15 @@ $query = $con->query("SELECT * FROM compartilhamento");
 while($reg = $query->fetch_array()){
     if($reg["arquivos_idarquivos"] == $idAquivo){
         //echo $reg["usuarios_idusuarios"];
-        $idUsuario = $reg["usuarios_idusuarios"];
+        $idUsuarioComp = $reg["usuarios_idusuarios"];
         $connect = mysqli_connect('localhost','root','');
         $db = mysqli_select_db($connect,'selecao_educandus');
-        $query_select = "SELECT email FROM usuarios WHERE idusuarios = '$idUsuario'";
+        $query_select = "SELECT email FROM usuarios WHERE idusuarios = '$idUsuarioComp'";
         $select = mysqli_query($connect,$query_select);
         $array = mysqli_fetch_array($select);
         $logarray = $array['email'];
-        echo "$logarray<br>";
+        //echo "$logarray<br>";
+        echo "<a href='../repositorio/excluirCompartilhamento.php?idAquivo=$idAquivo&nomeArquivo=$nomeArquivo&idUsuarioComp=$idUsuarioComp'>$logarray Remover</a><br>";
     }
 }
 

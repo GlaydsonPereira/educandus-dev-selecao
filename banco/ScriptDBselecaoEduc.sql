@@ -51,6 +51,7 @@ CREATE TABLE IF NOT EXISTS `selecao_educandus`.`usuarios` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
 CREATE INDEX `fk_usuarios_contas1_idx` ON `selecao_educandus`.`usuarios` (`contas_idcontas` ASC)  COMMENT '';
 
 CREATE UNIQUE INDEX `email_UNIQUE` ON `selecao_educandus`.`usuarios` (`email` ASC)  COMMENT '';
@@ -67,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `selecao_educandus`.`tipo_arquivo` (
   PRIMARY KEY (`idtipo_arquivo`)  COMMENT '')
 ENGINE = InnoDB;
 
-INSERT INTO tipo_arquivo (idtipo_arquivo, descricao) VALUES ('1', 'Foto'), ('2', 'Vídeo'), ('3', 'Documentos'), ('4', 'Outros');
+INSERT INTO tipo_arquivo (idtipo_arquivo, descricao) VALUES ('1', 'Foto'), ('2', 'Video'), ('3', 'Documentos'), ('4', 'Outros');
 
 -- -----------------------------------------------------
 -- Table `selecao_educandus`.`arquivos`
@@ -78,8 +79,8 @@ CREATE TABLE IF NOT EXISTS `selecao_educandus`.`arquivos` (
   `idarquivos` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `usuarios_idusuarios` INT NOT NULL COMMENT '',
   `nome` VARCHAR(45) NULL COMMENT '',
-  `path` VARCHAR(45) NULL COMMENT '',
-  `tamanho` INT NULL COMMENT '',
+  `path` VARCHAR(255) NULL COMMENT '',
+  `tamanho` decimal(50,30) NULL COMMENT '',
   `tipo_arquivo_idtipo_arquivo` INT NOT NULL COMMENT '',
   PRIMARY KEY (`idarquivos`, `usuarios_idusuarios`, `tipo_arquivo_idtipo_arquivo`)  COMMENT '',
   CONSTRAINT `fk_arquivos_usuarios`
@@ -93,6 +94,7 @@ CREATE TABLE IF NOT EXISTS `selecao_educandus`.`arquivos` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
 
 CREATE INDEX `fk_arquivos_usuarios_idx` ON `selecao_educandus`.`arquivos` (`usuarios_idusuarios` ASC)  COMMENT '';
 
@@ -119,6 +121,7 @@ CREATE TABLE IF NOT EXISTS `selecao_educandus`.`compartilhamento` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
 
 CREATE INDEX `fk_compartilhamento_arquivos1_idx` ON `selecao_educandus`.`compartilhamento` (`arquivos_idarquivos` ASC)  COMMENT '';
 

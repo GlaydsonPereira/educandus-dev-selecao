@@ -20,31 +20,27 @@ $logarray = $array['email'];
           echo"<script language='javascript' type='text/javascript'>alert('Favor digitar seu email corretamente');window.location.href='../tela/telaCadastro.php';</script>";  
         }else{
         
-             $len = strlen($senha); 
-             if ($len < 8) { 
+            $len = strlen($senha); 
+            if ($len < 8) { 
                     echo"<script language='javascript' type='text/javascript'>alert('Favor digitar no mínimo oito caracteres na senha');window.location.href='../tela/telaCadastro.php';</script>";
-                 }
-                 
-             
-                 
-             
-            
-            if($logarray == $email){
+                }elseif(strstr($senha,'@') || strstr($senha,'$') || strstr($senha,'%')|| strstr($senha,'&')){
+                    echo"<script language='javascript' type='text/javascript'>alert('Favor não digitar os caracteres especiais (@,$,%,&) na senha');window.location.href='../tela/telaCadastro.php';</script>";
+            }elseif($logarray == $email){
 
-              echo"<script language='javascript' type='text/javascript'>alert('Esse email já existe');window.location.href='../tela/telaCadastro.php';</script>";
-              die();
+                echo"<script language='javascript' type='text/javascript'>alert('Esse email já existe');window.location.href='../tela/telaCadastro.php';</script>";
+                die();
 
             }else{
 
                 $idconta = $tipoConta;
-              $query = "INSERT INTO usuarios (contas_idcontas,email,senha) VALUES ('$idconta','$email','$senha')";
-              $insert = mysqli_query($connect,$query);
+                $query = "INSERT INTO usuarios (contas_idcontas,email,senha) VALUES ('$idconta','$email','$senha')";
+                $insert = mysqli_query($connect,$query);
 
-              if($insert){
-                echo"<script language='javascript' type='text/javascript'>alert('Usuário cadastrado com sucesso!');window.location.href='../../login/tela/index.html'</script>";
-              }else{
-                  echo"<script language='javascript' type='text/javascript'>alert('Não foi possível cadastrar esse usuário');window.location.href='../tela/telaCadastro.php'</script>";
-              }
+                if($insert){
+                  echo"<script language='javascript' type='text/javascript'>alert('Usuário cadastrado com sucesso!');window.location.href='../../login/tela/index.html'</script>";
+                }else{
+                    echo"<script language='javascript' type='text/javascript'>alert('Não foi possível cadastrar esse usuário');window.location.href='../tela/telaCadastro.php'</script>";
+                }
             }
         }
     }

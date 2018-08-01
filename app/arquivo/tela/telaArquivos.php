@@ -1,3 +1,4 @@
+<a href="../../login/tela/index.html">SAIR PARA TELA LOGIN</a>
 <?php 
 session_start();
 if($_SESSION['usuarioLogado'] == null){
@@ -23,7 +24,7 @@ $repositorio = new ArquivoRepositorio();
         <form enctype="multipart/form-data" action="../repositorio/uploadArquivo.php" method="POST">
             
             <div style="float: top; clear: both; margin-left: 5%; margin-right: 5%;">
-                <label>Enviar esse arquivo: </label><br/>
+                <label>Enviar arquivo: </label><br/>
                 <input name="userfile" type="file" />
                 <?php
                  $con = new mysqli('localhost','root','','selecao_educandus' ) or die (mysql_error());         
@@ -55,7 +56,7 @@ $repositorio = new ArquivoRepositorio();
                                     $nomeArquivo = $reg['nome'];
                                     $linha = "<tr>";
                                     $linha .= "<td>".$reg['nome']."</td>";
-                                    $linha .= "<td><center><a href='../../compartilhamento/tela/telaCompartilhamento.php?idArquivo=$idArquivo&nomeArquivo=$nomeArquivo'>".$reg['qtdCompartilhamentos']."</a></center></td>";
+                                    $linha .= "<td><center><a href='../../compartilhamento/tela/telaCompartilhamento.php?idArquivo=$idArquivo&nomeArquivo=$nomeArquivo'>".$reg['qtdCompartilhamentos'].", adicionar compartilhamento"."</a></center></td>";
                                     $linha .= "<td><a href='../repositorio/excluirArquivo.php?idArquivo=$idArquivo'>Excluir</a></td>";
                                     $linha .= "<tr>";
                                     echo $linha;
@@ -77,7 +78,10 @@ $repositorio = new ArquivoRepositorio();
                             if(!empty($arrayCompartilhados)){
                                 while ($reg = $arrayCompartilhados->fetch_array()){
                                     $linha = "<tr>";
-                                    $linha .= "<td>".$reg['nome']."</td>";
+                                    
+                                    $linha .= "<td><a href='../arquivosUpload/".$reg['nome']."?'>".$reg['nome']."</a></td>";
+                                    
+                                    //$linha .= "<td>".$reg['nome']."</td>";
                                     $linha .= "<tr>";
                                     echo $linha;
                                 }

@@ -46,7 +46,7 @@ $destination = $dir.$filename;
 
 if($nomeArquivo == null){
     echo"<script language='javascript' type='text/javascript'>alert('Selecione o Arquivo');window.location.href='../tela/telaArquivos.php';</script>";
-}elseif($nBytes > $limiteArquivo){
+}elseif(($nBytes > $limiteArquivo) || ($nBytes == 0)){
     echo "<script language='javascript' type='text/javascript'>alert('Arquivo maior que o limite de " . $limiteArquivo . "MB');window.location.href='../tela/telaArquivos.php'</script>";
 }elseif ($nBytes + $espacoOculpado > $limiteConta) {
     echo "<script language='javascript' type='text/javascript'>alert('Arquivo ultrapassa o limite da conta de " . $limiteConta . "MB');window.location.href='../tela/telaArquivos.php'</script>";

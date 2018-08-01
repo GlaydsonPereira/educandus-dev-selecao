@@ -20,7 +20,7 @@ $repositorio = new ArquivoRepositorio();
         <link href="../../recursos/css/folha_estilo.css" media="screen" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <form enctype="multipart/form-data" action="../repositorio/updateArquivo.php" method="POST">
+        <form enctype="multipart/form-data" action="../repositorio/uploadArquivo.php" method="POST">
             
             <div style="float: top; clear: both; margin-left: 5%; margin-right: 5%;">
                 <label>Enviar esse arquivo: </label><br/>

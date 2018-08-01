@@ -18,7 +18,7 @@ while ($reg1 = $query1->fetch_array()){
    $espacoArquivo = $reg1['tamanho'];
    $espacoOculpado = $espacoOculpado + $espacoArquivo;
 }
-echo $espacoOculpado;
+//echo $espacoOculpado;
 
 $query2 = $con->query ("SELECT * FROM usuarios WHERE idusuarios = '$idusuario'");
 $reg2 = $query2->fetch_array();
@@ -31,10 +31,13 @@ $limiteConta = $reg3['limite_max_conta'];
 $limiteArquivo = $reg3['limite_max_arquivo'];
 //echo ($limiteConta ."-". $limiteArquivo);
 
+$dir = "../arquivosUpload/";
+$localOrigem = $_FILES['userfile']['tmp_name'];
 $nomeArquivo= $_FILES['userfile']['name'];
 $filename = $nomeArquivo;
-$destination = "../arquivosUpload/".$filename;
-move_uploaded_file($filename, $destination);
+$destination = $dir.$filename;
+
+
 
 //echo $tipoArquivo; 
 //echo $nBytes; 
@@ -52,7 +55,12 @@ if($nomeArquivo == null){
     $db = mysqli_select_db($connect,'selecao_educandus');
     $query = "INSERT INTO arquivos (usuarios_idusuarios,nome,path,tamanho,tipo_arquivo_idtipo_arquivo) VALUES ('$idusuario','$nomeArquivo','$destination','$nBytes','$tipoArquivo')";
     $insert = mysqli_query($connect,$query);
-
+    
+    if(!file_exists($dir)){
+    mkdir($dir);
+    };
+    
+    copy($localOrigem, $destination);
                   if($insert){
                       echo"<script language='javascript' type='text/javascript'>alert('Arquivo cadastrado com sucesso!');window.location.href='../tela/telaArquivos.php'</script>";
                   }else{

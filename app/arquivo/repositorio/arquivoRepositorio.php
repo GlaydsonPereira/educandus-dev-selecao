@@ -46,9 +46,9 @@ class ArquivoRepositorio{
      */
     function consultarLimiteUploadArquivoPorConta($idUsuario) {
         
+        
         $sql = " SELECT con.limite_max_arquivo ";
-        $sql .= " INNER JOIN contas con on (usu.contas_idcontas = con.idcontas) ";
-        $sql .= " FROM usuarios usu  WHERE usu.idusuarios = $idUsuario ";
+        $sql .= " FROM usuarios usu INNER JOIN contas con on (usu.contas_idcontas = con.idcontas) WHERE usu.idusuarios = $idUsuario ";
         $query = $this->db->query($sql);
 
         return $this->db->query($sql);
